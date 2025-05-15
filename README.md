@@ -15,12 +15,25 @@ This bundle is aimed to offer product clone functionality within Akeneo PIM.
 > _Note:_ As of Akeneo 5, the Enterprise Edition ships with an included clone feature, therefore this bundle
 is not compatible with Akeneo 5 Enterprise Edition! For the Akeneo 5 Community Edition, the bundle will work as before.
 
-## Installation ##
+## Installation for Akeneo PIM v7.0 ##
+
+Add to composer.json this git repository as target for bundle version check
+
+```bash
+{
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/mijora/akeneo-product-cloner"
+        }
+    ]
+}
+```
 
 You can install the package with the following command.
 
 ``` bash
-composer require flagbit/product-cloner-bundle
+composer require flagbit/product-cloner-bundle:dev-ak7.0
 ```
 
 ### Enable the bundle ####
@@ -41,7 +54,7 @@ Now that you have activated and configured the bundle, all that is left to do is
 routing files.
 
 ``` yaml
-# config/routes/product_cloner.yml
+# config/routes/flagbit_product_cloner.yml
 flagbit_product_cloner:
     resource: "@FlagbitProductClonerBundle/Resources/config/routing.yml"
 ```
@@ -49,7 +62,8 @@ flagbit_product_cloner:
 Build and install the new front-end dependencies (new translations, etc.)
 
 ``` bash
-make cache assets css javascript-prod
+NO_DOCKER=true make upgrade-front
+NO_DOCKER=true make cache
 ```
 
 ## How to use it ##
