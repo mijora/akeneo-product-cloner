@@ -3,7 +3,7 @@ extensions:
         module: flagbit/product-edit-form/clone
         parent: pim-product-model-edit-form-secondary-actions
         targetZone: secondary-actions
-        aclResourceId: pim_enrich_product_model_remove
+        aclResourceId: pim_enrich_product_model_create
         position: 90
         config:
             formName: flagbit-product-edit-form-clone-modal
@@ -12,7 +12,7 @@ extensions:
         module: flagbit/product-edit-form/clone
         parent: pim-product-edit-form-secondary-actions
         targetZone: secondary-actions
-        aclResourceId: pim_enrich_product_model_remove
+        aclResourceId: pim_enrich_product_create
         position: 90
         config:
             formName: flagbit-product-edit-form-clone-modal
