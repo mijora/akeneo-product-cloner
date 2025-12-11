@@ -91,6 +91,12 @@ class ProductController extends AbstractController
      */
     private $attributeCodeBlacklist;
 
+    private $customAttributesToRemove = [
+        'ean',
+        'suppliers_info',
+        'barcodes',
+    ];
+
     public function __construct(
         ProductRepositoryInterface $productRepository,
         AttributeRepositoryInterface $attributeRepository,
@@ -209,6 +215,14 @@ class ProductController extends AbstractController
         if (isset($data['values'][$identifierAttributeCode])) {
             unset($data['values'][$identifierAttributeCode]);
         }
+
+        // remove custom identifiers
+        foreach ($this->customAttributesToRemove as $key) {
+            if (isset($data['values'][$key])) {
+                unset($data['values'][$key]);
+            }
+        }
+
         return $data;
     }
 
